@@ -354,3 +354,11 @@ a:hover {
   color: #ffda8e;
   text-decoration: none;
 }
+
+#sq-card-number, #sq-cvv, #sq-expiration-date, #sq-postal-code {
+  border: black solid 1px;
+  height: 20px;
+}
+label {
+  font-size: 20px;
+}
