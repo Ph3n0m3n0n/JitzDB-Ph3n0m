@@ -1,6 +1,5 @@
 #menuCircles {
   border-radius: 90%;
-  /*background: white;*/
   border: 5px solid #CFB055;
   padding: 10px;
   width: 200px;
@@ -37,8 +36,8 @@
 }
 
 #wrapper {
-  display: flex;    /* Magic begins */
-  flex-wrap: wrap;  /* Allow multiple lines */
+  display: flex;    
+  flex-wrap: wrap;  
 
 }
 
@@ -46,4 +45,25 @@
   flex: 1;
   min-width: 208px;
   border: 1px solid;
+}
+
+
+/* Ph3n0m CSS3 */
+#roundMenu img {
+/*  align-items: center;*/
+  border-radius: 50%;
+  border:solid 7px #CFB055;
+  margin: 15px 0 15px 0;
+  height: 200px;
+  width: 200px;
+}
+figure {
+  margin: 25px 0 25px 0;
+}
+figcaption {
+  color: #CFB055;
+  font-size: 20px;
+}
+figcaption:hover {
+  color: #ffda8e;
 }
