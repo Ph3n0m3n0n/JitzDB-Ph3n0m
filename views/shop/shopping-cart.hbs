@@ -1,0 +1,66 @@
+{{> header }}
+
+<!-- <script>
+    var stripeTotal = {{cart.grandTotalPrice}} * 100;
+</script> -->
+
+<div class="col-sm-6 col-md-6"></div>
+    <div style="padding: 15px;" class="row">
+        <div style="font-size: 25px;" class="jumbotron text-center">
+            <strong>SubTotal: {{ cart.subTotalPrice }}</strong><br>
+            <strong>Tax: {{ cart.totalTaxPrice }}</strong><br>
+            <strong>Total: {{ cart.grandTotalPrice }}</strong><br>
+
+            <!-- Stripe secure payments -->
+            <form action="/your-server-side-code" method="POST">
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_live_PolTnTo1LKJGBYTmH9tCtcfH"
+                data-amount={{cart.grandTotalPrice}}
+                data-name="Jitterz"
+                data-description="Secure Payment Form"
+                data-image="/images/favicon.ico"
+                data-locale="auto"
+                data-zip-code="true">
+              </script>
+        </form>
+        </div>
+    </div>
+
+<!-- Checks if theres products objects -->
+{{# if products }}
+<div style="display: flex;" class="container">
+    <div class="row">
+            <ul class="list-group">
+                {{# each products }}
+                <div class="col-sm-6 col-md-6">
+                <img class="img-responsive" style="height: 300px; width: 100%;" src="{{ this.item.imagePath }}">
+                    <li class="list-group-item">
+                        <span class="badge">{{ this.qty }}</span>
+                        <strong>{{ this.item.title }} - {{ this.item.size}}</strong>
+                        <span style="color: black; font-size: 18px;" class="label">${{ this.price }}</span>
+                        <div class="btn-group">
+                            <button style="color: black;" class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown"> Modify <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/reduce/{{this.item._id}}">Reduce by 1</a></li>
+                                <li><a href="/increase/{{this.item._id}}">Increase by 1</a></li>
+                                <li><a href="/remove/{{this.item._id}}">Remove All</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </div>
+                {{/each}}
+            </ul>
+    </div> 
+</div><hr>   
+{{ else }}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>No Items in Cart</h2>
+        </div>
+    </div>
+{{/if}}
+
+
+
+{{> footer }}
